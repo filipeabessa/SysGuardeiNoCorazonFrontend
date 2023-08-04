@@ -18,12 +18,10 @@ const OffenseCard: FC<DisaffectionCardProps> = ({
       width="1000px"
       padding="10px"
       elevation={2}
-      background="#F8E9EC"
       title={offense?.title}
       titleVariant="h6"
-      onClick={() => router.push(`/disaffections/${offense?.id}`)}
       sx={{
-        cursor: 'pointer',
+        backgroundColor: '#F8E9EC',
       }}
     >
       <Typography

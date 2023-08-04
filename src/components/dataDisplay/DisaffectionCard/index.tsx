@@ -15,7 +15,7 @@ const DisaffectionCard: FC<DisaffectionCardProps> = ({
 
   return (
     <Card
-      width="250px"
+      width="500px"
       padding="10px"
       elevation={2}
       title={disaffection?.title}
