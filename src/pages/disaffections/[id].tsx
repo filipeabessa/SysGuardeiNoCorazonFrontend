@@ -6,12 +6,15 @@ import { BASE_API_URL } from '@/constants';
 import OffenseCard from '@/components/dataDisplay/OffenseCard';
 import Box from '@/components/layout/Box';
 import { useRouter } from 'next/router';
+import Button from '@/components/inputs/Button';
+import Modal from '@/components/surfaces/Modal';
 
 
 const DisaffectionPage: FC<any> = () => {
   const router = useRouter();
   
   const [disaffection, setDisaffection] = useState<Disaffection>(mockDisaffection)
+  const [addOffenseModalOpen, setAddOffenseModalOpen] = useState(false);
 
   const getDisaffection = useCallback(async () => {
     const res = await fetch(`${BASE_API_URL}/disaffections/${disaffection.id}`);
@@ -22,10 +25,26 @@ const DisaffectionPage: FC<any> = () => {
   useEffect(() => {
     getDisaffection();
   }, []);
-    
+
+  const handleAddOffenseButtonClick = useCallback(() => {
+    setAddOffenseModalOpen(true);
+  }, []);
+  
+  const handleAddOffenseModalClose = useCallback(() => {
+    setAddOffenseModalOpen(false);
+  }, []);
 
   return (
     <BaseLayout title={`${disaffection.title}`}>
+      <Button
+        onClick={handleAddOffenseButtonClick}
+        sx={{
+          alignSelf: 'flex-start',
+          marginBottom: '20px',
+        }}
+      >
+        Criar ofensa
+      </Button>
       <Box
         display="flex"
         flexDirection="column"
@@ -44,6 +63,13 @@ const DisaffectionPage: FC<any> = () => {
           ))
         }
       </Box>
+      <Modal
+        open={addOffenseModalOpen}
+        handleClose={handleAddOffenseModalClose}
+        title="Criar ofensa"
+      >
+        <div></div>
+      </Modal>
     </BaseLayout>
   );
 }
