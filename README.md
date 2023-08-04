@@ -9,6 +9,7 @@ yarn run dev
 
 ## Tech Stack
 
+* [TypeScript](https://www.typescriptlang.org/)
 * [React](https://reactjs.org/)
 * [Next.js](https://nextjs.org/)
 * [Material UI](https://material-ui.com/)
