@@ -6,10 +6,6 @@ const navLinksProperties: NavLinkProperties[]  = [
     href: '/',
   },
   {
-    label: 'Desafetos',
-    href: '/disaffections',
-  },
-  {
     label: 'Sobre',
     href: '/about',
   }

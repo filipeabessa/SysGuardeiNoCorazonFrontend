@@ -36,6 +36,7 @@ function Card({
   marginBottom,
   background,
   expanded = true,
+  sx,
   ...props
 }: ICssProperties & MuiCardProps & CardProps) {
   return (
@@ -43,6 +44,7 @@ function Card({
       variant={variant}
       elevation={elevation}
       sx={{
+        ...sx,
         minWidth,
         minHeight,
         overflowY,

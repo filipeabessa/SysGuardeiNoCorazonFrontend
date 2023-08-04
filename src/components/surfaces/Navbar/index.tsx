@@ -23,13 +23,17 @@ const Navbar: FC = () => {
         width="100%"
         justifyContent="space-between"
       >
-        <Image 
-          id="navbar-logo"
-          alt="logo"
-          src="/logo-no-bg.png"
-          width="300"
-          height="150"
-        />
+        <Link
+          href="/"
+        >
+          <Image 
+            id="navbar-logo"
+            alt="logo"
+            src="/logo-no-bg.png"
+            width="300"
+            height="150"
+          />
+        </Link>
 
         <Box
           id="navbar-links-container"
