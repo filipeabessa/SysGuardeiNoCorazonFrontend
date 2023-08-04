@@ -6,6 +6,7 @@ import { FC, useCallback, useState } from "react";
 import { mockDisaffections } from "@/mockData";
 import Modal from "@/components/surfaces/Modal";
 import Button from "@/components/inputs/Button";
+import CreateDisaffectionForm from "@/forms/CreateDisaffectionForm";
 
 const Home: FC<any> = () => {
   const [disaffections, setDisaffections] = useState<Disaffection[]>(mockDisaffections)
@@ -49,7 +50,9 @@ const Home: FC<any> = () => {
         handleClose={handleCreateDisaffectionModalClose}
         title="Criar Desafeição"
       >
-        <div></div>
+        <CreateDisaffectionForm 
+          handleCloseModal={handleCreateDisaffectionModalClose}
+        />
       </Modal>
     </BaseLayout>
   );

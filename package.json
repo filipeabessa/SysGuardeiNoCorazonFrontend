@@ -16,9 +16,12 @@
     "@emotion/styled": "latest",
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
+    "@types/yup": "^0.32.0",
+    "formik": "^2.4.3",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@types/node": "latest",

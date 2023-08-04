@@ -58,7 +58,6 @@ function Card({
         padding,
         marginTop,
         marginBottom,
-        background: background || 'white',
       }}
       {...props}
     >

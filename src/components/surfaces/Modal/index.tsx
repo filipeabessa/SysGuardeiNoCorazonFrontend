@@ -24,6 +24,9 @@ const Modal: FC<BaseModalProps> = (
       onClose={handleClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
+      sx={{
+        overflowY: 'auto',
+      }}
       {...MuiModalProps}
     >
       <Card
@@ -46,7 +49,12 @@ const Modal: FC<BaseModalProps> = (
           >
             <CloseIcon />
           </IconButton>
-          <CardHeader title={title} />
+          <CardHeader 
+            title={title}
+            titleTypographyProps={{
+              color: 'secondary.main',
+            }}
+          />
           <CardContent>
               {children}
           </CardContent>

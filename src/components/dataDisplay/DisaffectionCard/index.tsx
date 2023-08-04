@@ -18,18 +18,18 @@ const DisaffectionCard: FC<DisaffectionCardProps> = ({
       width="250px"
       padding="10px"
       elevation={2}
-      background="primary.superLight"
       title={disaffection?.title}
       titleVariant="h6"
       onClick={() => router.push(`/disaffections/${disaffection?.id}`)}
       sx={{
         cursor: 'pointer',
+        background: '#F8E9EC'
       }}
     >
       <Typography
         variant="body1"
       >
-        <strong>Id:</strong> {disaffection?.id}
+        <strong>Id:</strong>&nbsp; {disaffection?.id}
       </Typography>
     </Card>
   );
