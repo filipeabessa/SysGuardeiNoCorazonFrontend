@@ -1,4 +1,16 @@
-import { Disaffection } from "./types";
+import { Disaffection, Offense } from "./types";
+
+const mockOffense: Offense = {
+  id: "1",
+  title: "Ofensa 1",
+  description: "Descrição da ofensa 1",
+  cursedFamilyMember: "Membro da família amaldiçoado 1",
+  offendingPerson: "Pessoa ofendida 1",
+}
+
+const mockOffenses: Offense[] = [
+  mockOffense,
+]
 
 const mockDisaffection: Disaffection = {
   id: "1",
@@ -8,7 +20,7 @@ const mockDisaffection: Disaffection = {
   updatedAt: new Date(),
   witnesses: "Testemunhas da desafeição 1",
   involvedPeople: "Pessoas envolvidas na desafeição 1",
-  offenses: ["1", "2"],
+  offenses: mockOffenses,
 }
 
 const mockDisaffections: Disaffection[] = [

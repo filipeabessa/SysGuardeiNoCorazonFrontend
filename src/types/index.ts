@@ -37,6 +37,14 @@ export interface ICssProperties {
   paddingTop?: string;
 }
 
+export type Offense = {
+  id: string;
+  title: string;
+  description: string;
+  cursedFamilyMember: string;
+  offendingPerson: string;
+}
+
 export type Disaffection = {
   id: string;
   title: string;
@@ -45,5 +53,5 @@ export type Disaffection = {
   updatedAt: Date;
   witnesses: string;
   involvedPeople: string;
-  offenses: any[];
+  offenses: Offense[];
 }
