@@ -15,6 +15,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children, title }) => {
       display="flex"
       flexDirection="column"
       height="100vh"
+      width="100vw"
       position="relative"
     >
       <Navbar />
@@ -23,7 +24,9 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children, title }) => {
         display="flex"
         flexDirection="column"
         alignItems="center"
-        padding="20px"
+        height="100%"
+        width="100vw"
+        paddingTop="30px"
       >
         <Box
           component="header"
@@ -42,6 +45,8 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children, title }) => {
           flexDirection="column"
           alignItems="center"
           alignSelf="center"
+          justifySelf="center"
+          padding="50px"
         >
           {children}
         </Box>

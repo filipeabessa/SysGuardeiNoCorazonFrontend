@@ -1,12 +1,11 @@
 import Typography from "@/components/dataDisplay/Typography";
 import Box from "@/components/layout/Box";
-import Link from "@/components/navigation/Link";
 import BaseLayout from "@/layouts/BaseLayout";
 import { FC } from "react";
 
-const Home: FC<any> = () => {
+const About: FC<any> = () => {
   return (
-    <BaseLayout title="Home">
+    <BaseLayout title="Sobre">
       <Box>
         <Typography
           textAlign="justify"
@@ -19,4 +18,4 @@ const Home: FC<any> = () => {
   );
 }
 
-export default Home;
+export default About;

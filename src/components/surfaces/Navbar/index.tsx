@@ -19,7 +19,7 @@ const Navbar: FC = () => {
       <Box
         id="navbar-content-container"
         display="flex"
-        padding="0px 100px"
+        padding="0px 80px"
         width="100%"
         justifyContent="space-between"
       >
@@ -27,8 +27,8 @@ const Navbar: FC = () => {
           id="navbar-logo"
           alt="logo"
           src="/logo-no-bg.png"
-          width="200"
-          height="100"
+          width="300"
+          height="150"
         />
 
         <Box

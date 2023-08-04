@@ -9,6 +9,10 @@ const navLinksProperties: NavLinkProperties[]  = [
     label: 'Desafetos',
     href: '/disaffections',
   },
+  {
+    label: 'Sobre',
+    href: '/about',
+  }
 ]
 
 export default navLinksProperties;

@@ -25,6 +25,7 @@ const Link: React.FC<CustomLinkProps> = ({
           textDecoration: 'none',
           display: 'flex',
         }}
+        variant="body1"
       >
         {
           children
