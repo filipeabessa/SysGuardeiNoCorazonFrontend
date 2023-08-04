@@ -13,3 +13,10 @@ yarn run dev
 * [React](https://reactjs.org/)
 * [Next.js](https://nextjs.org/)
 * [Material UI](https://material-ui.com/)
+
+## Code quality tools
+
+* [ESLint](https://eslint.org/)
+* [Prettier](https://prettier.io/)
+* [.editorconfig](https://editorconfig.org/)
+  
