@@ -18,13 +18,15 @@ const DisaffectionPage: FC<any> = () => {
   const [createOffenseModalOpen, setCreateOffenseModalOpen] = useState(false);
 
   useEffect(() => {
-    getDisaffection();
+    if (!router?.query?.id) {
+      getDisaffection(router?.query.id);
+    }
   }, []);
 
-  const getDisaffection = useCallback(async () => {
-    const res = await fetch(`${BASE_API_URL}/disaffections/${router?.query.id}`);
+  const getDisaffection = useCallback(async (disaffectionId: any) => {
+    const res = await fetch(`${BASE_API_URL}/disaffection/${disaffectionId}}`);
     const data = await res.json();
-    // setDisaffection(data);
+    setDisaffection(data.results);
   }, []);
 
   const createOffense = useCallback(async (data: any) => {
@@ -41,7 +43,7 @@ const DisaffectionPage: FC<any> = () => {
 
     if (res.status === 201) {
       closeCreateOffenseModal();
-      getDisaffection();
+      getDisaffection(router?.query.id);
     }
     
   }, [disaffection]);
@@ -55,7 +57,7 @@ const DisaffectionPage: FC<any> = () => {
   }, []);
 
   return (
-    <BaseLayout title={`${disaffection.title}`}>
+    <BaseLayout title={`${disaffection?.title}`}>
       <Button
         onClick={openCreateOffenseModal}
         sx={{
