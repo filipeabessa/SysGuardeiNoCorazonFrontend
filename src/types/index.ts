@@ -55,3 +55,17 @@ export type Disaffection = {
   involvedPeople: string;
   offenses: Offense[];
 }
+
+export type CreateDisaffectionDto = {
+  title: string;
+  description: string;
+  witnesses: string;
+  involvedPeople: string;
+}
+
+export type CreateOffenseDto = {
+  title: string;
+  description: string;
+  cursedFamilyMember: string;
+  offendingPerson: string;
+}

@@ -1,7 +1,7 @@
 import { FC, useCallback, useEffect, useState } from "react";
 import DisaffectionCard from "@/components/dataDisplay/DisaffectionCard";
 import Box from "@/components/layout/Box";
-import { Disaffection } from "@/types";
+import { CreateDisaffectionDto, Disaffection } from "@/types";
 import BaseLayout from "@/layouts/BaseLayout";
 import { mockDisaffections } from "@/mockData";
 import Modal from "@/components/surfaces/Modal";
@@ -18,13 +18,18 @@ const Home: FC<any> = () => {
   }, []);
 
   const getDisaffections = useCallback(async () => {
-    const res = await fetch(`${BASE_API_URL}/disaffections`);
+    const res = await fetch(`${BASE_API_URL}/disaffection`)
     const data = await res.json();
-    // setDisaffections(data);
+    console.log("Disaffections", data);
+
+    if (res.status === 200) {
+
+      setDisaffections(data.results);
+    }
   }, []);
 
-  const createDisaffection = useCallback(async (data: any) => {
-    const res = await fetch(`${BASE_API_URL}/disaffections`, {
+  const createDisaffection = useCallback(async (data: CreateDisaffectionDto) => {
+    const res = await fetch(`${BASE_API_URL}/disaffection`, {
       method: 'POST',
       body: JSON.stringify({
         ...data,
@@ -33,7 +38,12 @@ const Home: FC<any> = () => {
         'Content-Type': 'application/json',
       },
     })
-  }, [disaffections]);
+
+    if (res.status === 201) {
+      closeCreateDisaffectionModal();
+      getDisaffections();
+    }
+  }, []);
   
   const openCreateDisaffectionModal = useCallback(() => {
     setCreateDisaffectionModalOpen(true);
@@ -60,7 +70,7 @@ const Home: FC<any> = () => {
         gap="10px"
       >
         {
-          disaffections.map((disaffection) => (
+          disaffections?.map((disaffection) => (
             <DisaffectionCard 
               key={`disaffection-card-${disaffection.id}`}
               disaffection={disaffection}

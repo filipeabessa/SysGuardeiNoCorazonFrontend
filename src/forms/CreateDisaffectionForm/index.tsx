@@ -5,6 +5,8 @@ import { TextField, Typography } from '@mui/material';
 import Box from '@/components/layout/Box';
 import Button from '@/components/inputs/Button';
 import { AddCircle } from '@mui/icons-material';
+import { CreateDisaffectionFormInputs } from './types';
+import { CreateDisaffectionDto } from '@/types';
 
 const validationSchema = yup.object({
   title: yup
@@ -27,7 +29,7 @@ const validationSchema = yup.object({
     ),
 });
 interface CreateDisaffectionFormProps {
-  handleSubmitForm: (requestBody: any) => Promise<any>;
+  handleSubmitForm: (createDisaffectionDto: CreateDisaffectionDto) => Promise<any>;
 }
 
 const CreateDisaffectionForm: FC<CreateDisaffectionFormProps> = ({
@@ -41,9 +43,16 @@ const CreateDisaffectionForm: FC<CreateDisaffectionFormProps> = ({
       involvedPeople: [],
     },
     validationSchema,
-    onSubmit: async (values: any) => {
+    onSubmit: async (values: CreateDisaffectionFormInputs) => {
       try {
-        await handleSubmitForm!(values);
+        const createDisaffectionDto: CreateDisaffectionDto = {
+          title: values.title,
+          description: values.description,
+          witnesses: values.witnesses.join(', '),
+          involvedPeople: values.involvedPeople.join(', '),
+        };
+        
+        await handleSubmitForm!(createDisaffectionDto);
       } catch (error) {
         console.log(error);
       }
