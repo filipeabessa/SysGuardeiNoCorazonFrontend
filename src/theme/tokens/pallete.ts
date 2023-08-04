@@ -52,10 +52,11 @@ const palette = {
     main: '#1565c0',
   },
   primary: {
-    main: '#F3A125',
+    main: '#E44E66',
   },
   secondary: {
     main: '#12294D',
+    light: '#1E3A6B',
   },
   tertiary: {
     main: '#ffda6f',

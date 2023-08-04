@@ -8,10 +8,11 @@ import Image from 'next/image';
 const Navbar: FC = () => {
   return (
     <Box
+      component="nav"
       id="navbar-container"
       display="flex"
       alignItems="center"
-      background="secondary.main"
+      background="primary.main"
       width="100vw"
       height="150px"
     >
@@ -24,8 +25,8 @@ const Navbar: FC = () => {
       >
         <Image 
           id="navbar-logo"
-          alt="land2land logo"
-          src="/images/logos/logo-land2land-white.png"
+          alt="logo"
+          src="/logo-no-bg.png"
           width="200"
           height="100"
         />

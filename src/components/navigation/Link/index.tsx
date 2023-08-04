@@ -1,5 +1,6 @@
 import NextLink, { LinkProps as NextLinkProps } from 'next/link';
 import { Link as MuiLink, LinkProps as MuiLinkProps } from '@mui/material';
+import Typography from '@/components/dataDisplay/Typography';
 
 interface CustomLinkProps extends NextLinkProps {
   children: React.ReactNode;
@@ -22,9 +23,12 @@ const Link: React.FC<CustomLinkProps> = ({
         sx={{
           ...sx,
           textDecoration: 'none',
+          display: 'flex',
         }}
       >
-        {children}
+        {
+          children
+        }
       </MuiLink>
   );
 };
