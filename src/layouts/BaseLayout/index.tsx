@@ -43,6 +43,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children, title }) => {
           component="main"
           display="flex"
           flexDirection="column"
+          justifyContent="center"
           alignItems="center"
           alignSelf="center"
           justifySelf="center"

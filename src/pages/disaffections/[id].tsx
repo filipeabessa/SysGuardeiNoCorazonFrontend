@@ -14,30 +14,30 @@ const DisaffectionPage: FC<any> = () => {
   const router = useRouter();
   
   const [disaffection, setDisaffection] = useState<Disaffection>(mockDisaffection)
-  const [addOffenseModalOpen, setAddOffenseModalOpen] = useState(false);
+  const [createOffenseModalOpen, setCreateOffenseModalOpen] = useState(false);
 
   const getDisaffection = useCallback(async () => {
-    const res = await fetch(`${BASE_API_URL}/disaffections/${disaffection.id}`);
+    const res = await fetch(`${BASE_API_URL}/disaffections/${router?.query.id}`);
     const data = await res.json();
     // setDisaffection(data);
-  }, [router.query.id]);
+  }, []);
 
   useEffect(() => {
     getDisaffection();
   }, []);
 
-  const handleAddOffenseButtonClick = useCallback(() => {
-    setAddOffenseModalOpen(true);
+  const handleCreateOffenseButtonClick = useCallback(() => {
+    setCreateOffenseModalOpen(true);
   }, []);
   
-  const handleAddOffenseModalClose = useCallback(() => {
-    setAddOffenseModalOpen(false);
+  const handleCreateOffenseModalClose = useCallback(() => {
+    setCreateOffenseModalOpen(false);
   }, []);
 
   return (
     <BaseLayout title={`${disaffection.title}`}>
       <Button
-        onClick={handleAddOffenseButtonClick}
+        onClick={handleCreateOffenseButtonClick}
         sx={{
           alignSelf: 'flex-start',
           marginBottom: '20px',
@@ -64,8 +64,8 @@ const DisaffectionPage: FC<any> = () => {
         }
       </Box>
       <Modal
-        open={addOffenseModalOpen}
-        handleClose={handleAddOffenseModalClose}
+        open={createOffenseModalOpen}
+        handleClose={handleCreateOffenseModalClose}
         title="Criar ofensa"
       >
         <div></div>

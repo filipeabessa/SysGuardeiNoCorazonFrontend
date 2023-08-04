@@ -1,22 +1,39 @@
 import DisaffectionCard from "@/components/dataDisplay/DisaffectionCard";
-import Typography from "@/components/dataDisplay/Typography";
 import Box from "@/components/layout/Box";
-import Link from "@/components/navigation/Link";
 import { Disaffection } from "@/types";
 import BaseLayout from "@/layouts/BaseLayout";
-import { FC, useState } from "react";
+import { FC, useCallback, useState } from "react";
 import { mockDisaffections } from "@/mockData";
+import Modal from "@/components/surfaces/Modal";
+import Button from "@/components/inputs/Button";
 
 const Home: FC<any> = () => {
   const [disaffections, setDisaffections] = useState<Disaffection[]>(mockDisaffections)
+  const [createDisaffectionModalOpen, setCreateDisaffectionModalOpen] = useState(false);
+
+  const handleCreateDisaffectionButtonClick = useCallback(() => {
+    setCreateDisaffectionModalOpen(true);
+  }, []);
+
+  const handleCreateDisaffectionModalClose = useCallback(() => {
+    setCreateDisaffectionModalOpen(false);
+  }, []);
 
   return (
     <BaseLayout title="Desafeições">
+      <Button
+        onClick={handleCreateDisaffectionButtonClick}
+        sx={{
+          alignSelf: 'flex-start',
+          marginBottom: '20px',
+        }}
+      >
+        Criar desafeição
+      </Button>
       <Box
         display="flex"
         flexWrap="wrap"
         gap="10px"
-        padding="20px"
       >
         {
           disaffections.map((disaffection) => (
@@ -27,6 +44,13 @@ const Home: FC<any> = () => {
           ))
         }      
       </Box>
+      <Modal
+        open={createDisaffectionModalOpen}
+        handleClose={handleCreateDisaffectionModalClose}
+        title="Criar Desafeição"
+      >
+        <div></div>
+      </Modal>
     </BaseLayout>
   );
 }
