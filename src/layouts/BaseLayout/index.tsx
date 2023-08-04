@@ -69,7 +69,17 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children, title }) => {
             gap: '5px',
           }}
         >
-          Desenvolvido por <Link href="github.com/land2land">filipeabessa</Link>
+          Desenvolvido por 
+          <a 
+            href="github.com/filipeabessa"
+            target="_blank"
+            style={{
+              color: 'inherit',
+            }}
+          >
+            filipeabessa
+          </a>
+          - 2023
         </Typography>
       </Box>
     </Box>
