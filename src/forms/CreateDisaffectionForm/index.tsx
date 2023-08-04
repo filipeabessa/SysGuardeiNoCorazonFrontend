@@ -1,7 +1,7 @@
-import { FC, ReactNode, useCallback, useEffect, useState } from 'react';
+import { FC, ReactNode } from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
+import { TextField, Typography } from '@mui/material';
 import Box from '@/components/layout/Box';
 import Button from '@/components/inputs/Button';
 import { AddCircle } from '@mui/icons-material';
@@ -27,13 +27,11 @@ const validationSchema = yup.object({
     ),
 });
 interface CreateDisaffectionFormProps {
-  handleSubmitForm?: (requestBody: any) => Promise<any>;
-  handleCloseModal: () => void;
+  handleSubmitForm: (requestBody: any) => Promise<any>;
 }
 
 const CreateDisaffectionForm: FC<CreateDisaffectionFormProps> = ({
   handleSubmitForm,
-  handleCloseModal,
 }) => {
   const formik = useFormik({
     initialValues: {
@@ -46,7 +44,6 @@ const CreateDisaffectionForm: FC<CreateDisaffectionFormProps> = ({
     onSubmit: async (values: any) => {
       try {
         await handleSubmitForm!(values);
-        handleCloseModal();
       } catch (error) {
         console.log(error);
       }

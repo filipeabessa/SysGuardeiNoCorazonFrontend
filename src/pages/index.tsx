@@ -1,29 +1,52 @@
+import { FC, useCallback, useEffect, useState } from "react";
 import DisaffectionCard from "@/components/dataDisplay/DisaffectionCard";
 import Box from "@/components/layout/Box";
 import { Disaffection } from "@/types";
 import BaseLayout from "@/layouts/BaseLayout";
-import { FC, useCallback, useState } from "react";
 import { mockDisaffections } from "@/mockData";
 import Modal from "@/components/surfaces/Modal";
 import Button from "@/components/inputs/Button";
 import CreateDisaffectionForm from "@/forms/CreateDisaffectionForm";
+import { BASE_API_URL } from "@/constants";
 
 const Home: FC<any> = () => {
   const [disaffections, setDisaffections] = useState<Disaffection[]>(mockDisaffections)
   const [createDisaffectionModalOpen, setCreateDisaffectionModalOpen] = useState(false);
 
-  const handleCreateDisaffectionButtonClick = useCallback(() => {
+  useEffect(() => {
+    getDisaffections();
+  }, []);
+
+  const getDisaffections = useCallback(async () => {
+    const res = await fetch(`${BASE_API_URL}/disaffections`);
+    const data = await res.json();
+    // setDisaffections(data);
+  }, []);
+
+  const createDisaffection = useCallback(async (data: any) => {
+    const res = await fetch(`${BASE_API_URL}/disaffections`, {
+      method: 'POST',
+      body: JSON.stringify({
+        ...data,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+  }, [disaffections]);
+  
+  const openCreateDisaffectionModal = useCallback(() => {
     setCreateDisaffectionModalOpen(true);
   }, []);
 
-  const handleCreateDisaffectionModalClose = useCallback(() => {
+  const closeCreateDisaffectionModal = useCallback(() => {
     setCreateDisaffectionModalOpen(false);
   }, []);
 
   return (
     <BaseLayout title="Desafeições">
       <Button
-        onClick={handleCreateDisaffectionButtonClick}
+        onClick={openCreateDisaffectionModal}
         sx={{
           alignSelf: 'flex-start',
           marginBottom: '20px',
@@ -47,11 +70,11 @@ const Home: FC<any> = () => {
       </Box>
       <Modal
         open={createDisaffectionModalOpen}
-        handleClose={handleCreateDisaffectionModalClose}
+        handleClose={closeCreateDisaffectionModal}
         title="Criar Desafeição"
       >
-        <CreateDisaffectionForm 
-          handleCloseModal={handleCreateDisaffectionModalClose}
+        <CreateDisaffectionForm
+          handleSubmitForm={createDisaffection}
         />
       </Modal>
     </BaseLayout>
