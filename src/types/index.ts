@@ -36,3 +36,14 @@ export interface ICssProperties {
   background?: string;
   paddingTop?: string;
 }
+
+export type Disaffection = {
+  id: string;
+  title: string;
+  description: string;
+  createdAt: Date;
+  updatedAt: Date;
+  witnesses: string;
+  involvedPeople: string;
+  offenses: any[];
+}

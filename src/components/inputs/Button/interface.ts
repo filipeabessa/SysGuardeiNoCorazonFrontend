@@ -9,6 +9,7 @@ interface ButtonProps extends ICssProperties, Omit<MuiButtonProps, 'color'> {
   children: React.ReactNode;
   color?: ButtonColor;
   width?: string;
+  marginTop?: string;
 }
 
 export default ButtonProps;

@@ -53,6 +53,8 @@ const palette = {
   },
   primary: {
     main: '#E44E66',
+    light: '#F06D85',
+    superLight: '#F8E9EC',
   },
   secondary: {
     main: '#12294D',

@@ -1,9 +1,8 @@
 import { FC } from 'react';
-import Link from '@/components/Link';
+import Link from '@/components/navigation/Link';
 import MuiButton from '@mui/material/Button';
 
 import ButtonProps from './interface';
-import { Typography } from '@mui/material';
 
 const Button: FC<ButtonProps> = ({
   children,
