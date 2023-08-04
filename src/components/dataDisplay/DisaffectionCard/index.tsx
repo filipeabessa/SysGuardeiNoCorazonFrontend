@@ -23,7 +23,7 @@ const DisaffectionCard: FC<DisaffectionCardProps> = ({
       onClick={() => router.push(`/disaffections/${disaffection?.id}`)}
       sx={{
         cursor: 'pointer',
-        background: '#F8E9EC'
+        background: '#F8E9EC',
       }}
     >
       <Typography

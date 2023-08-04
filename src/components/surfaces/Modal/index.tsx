@@ -25,7 +25,6 @@ const Modal: FC<BaseModalProps> = (
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
       sx={{
-        overflowY: 'auto',
       }}
       {...MuiModalProps}
     >
@@ -37,6 +36,8 @@ const Modal: FC<BaseModalProps> = (
           transform: 'translate(-50%, -50%)',
           width: '500px',
           p: 4,
+          maxHeight: '85vh',
+          overflowY: 'auto',
         }}
       >
           <IconButton 
