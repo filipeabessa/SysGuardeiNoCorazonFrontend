@@ -16,6 +16,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children, title }) => {
       flexDirection="column"
       minHeight="100vh"
       width="100vw"
+      position="relative"
     >
       <Navbar />
 
@@ -47,6 +48,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children, title }) => {
           alignSelf="center"
           justifySelf="center"
           padding="50px"
+          marginBottom="50px"
         >
           {children}
         </Box>
@@ -59,9 +61,9 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children, title }) => {
         height="50px"
         width="100vw"
         background="secondary.light"
-        flexShrink={0}
         position="absolute"
         bottom="0"
+        left="0"
       >
         <Typography
           variant="body1"
