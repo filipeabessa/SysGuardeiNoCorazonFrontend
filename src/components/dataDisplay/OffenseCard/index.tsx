@@ -16,7 +16,7 @@ const OffenseCard: FC<DisaffectionCardProps> = ({
 
   return (
     <Card
-      width="1000px"
+      width="80vw"
       padding="10px"
       elevation={2}
       title={offense?.title}
