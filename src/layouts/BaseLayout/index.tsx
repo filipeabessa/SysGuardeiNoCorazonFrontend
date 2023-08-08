@@ -14,9 +14,8 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children, title }) => {
     <Box
       display="flex"
       flexDirection="column"
-      height="100vh"
+      minHeight="100vh"
       width="100vw"
-      position="relative"
     >
       <Navbar />
 
@@ -60,6 +59,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children, title }) => {
         height="50px"
         width="100vw"
         background="secondary.light"
+        flexShrink={0}
         position="absolute"
         bottom="0"
       >
@@ -72,7 +72,7 @@ const BaseLayout: FC<BaseLayoutProps> = ({ children, title }) => {
         >
           Desenvolvido por 
           <a 
-            href="github.com/filipeabessa"
+            href="https://github.com/filipeabessa"
             target="_blank"
             style={{
               color: 'inherit',

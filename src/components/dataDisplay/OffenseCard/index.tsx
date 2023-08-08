@@ -3,6 +3,7 @@ import { FC } from "react";
 import Typography from "@/components/dataDisplay/Typography";
 import { Offense } from "@/types";
 import { useRouter } from "next/router";
+import dayjs from "dayjs";
 
 interface DisaffectionCardProps {
   offense: Offense;
@@ -47,6 +48,18 @@ const OffenseCard: FC<DisaffectionCardProps> = ({
         variant="body1"
       >
         <strong>Bulinador: </strong>&nbsp; {offense?.offendingPerson}
+      </Typography>
+      <Typography
+        color="secondary.main"
+        variant="body1"
+      >
+        <strong>Data da ocorrência: </strong>&nbsp; {dayjs(offense?.occurrenceDateTime).format('DD/MM/YYYY')}
+      </Typography>
+      <Typography
+        color="secondary.main"
+        variant="body1"
+      >
+        <strong>Horário da ocorrência: </strong>&nbsp; {dayjs(offense?.occurrenceDateTime).format('HH:mm')}
       </Typography>
     </Card>
   );

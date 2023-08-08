@@ -20,7 +20,7 @@ const validationSchema = yup.object({
   offendingPerson: yup
     .string()
     .required('Campo obrigatório'),
-  dateTime: yup
+  occurrenceDateTime: yup
     .date()
     .required('Campo obrigatório'),
 });
@@ -37,7 +37,7 @@ const CreateOffenseForm: FC<CreateOffenseFormProps> = ({
       description: '',
       cursedFamilyMember: '',
       offendingPerson: '',
-      dateTime: dayjs(new Date()),
+      occurrenceDateTime: dayjs(new Date()),
     },
     validationSchema,
     onSubmit: async (values: any) => {
@@ -105,17 +105,17 @@ const CreateOffenseForm: FC<CreateOffenseFormProps> = ({
 
         <DateTimeField
           id="offense-date-time-field"
-          name="dateTime"
+          name="occurrenceDateTime"
           label="Data e hora do ocorrido"
-          value={formik.values.dateTime}
-          onChange={(date) => formik.setFieldValue('dateTime', date.$d)}
+          value={formik.values.occurrenceDateTime}
+          onChange={(date) => formik.setFieldValue('occurrenceDateTime', date.$d)}
           onBlur={formik.handleBlur}
-          helperText={formik.touched.dateTime && formik.errors.dateTime ? String(formik.errors.dateTime) : '' as ReactNode}
+          helperText={formik.touched.occurrenceDateTime && formik.errors.occurrenceDateTime ? String(formik.errors.occurrenceDateTime) : '' as ReactNode}
           slotProps={{
             textField: {
                 variant: "outlined",
-                error: formik.touched.dateTime && Boolean(formik.errors.dateTime),
-                helperText: formik.touched.dateTime && formik.errors.dateTime ? String(formik.errors.dateTime) : '' as ReactNode
+                error: formik.touched.occurrenceDateTime && Boolean(formik.errors.occurrenceDateTime),
+                helperText: formik.touched.occurrenceDateTime && formik.errors.occurrenceDateTime ? String(formik.errors.occurrenceDateTime) : '' as ReactNode
             }
           }}
         />

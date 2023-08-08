@@ -43,6 +43,7 @@ export type Offense = {
   description: string;
   cursedFamilyMember: string;
   offendingPerson: string;
+  occurrenceDateTime: string;
 }
 
 export type Disaffection = {
