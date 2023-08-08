@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, use, useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { TextField, Typography } from '@mui/material';
@@ -39,8 +39,8 @@ const CreateDisaffectionForm: FC<CreateDisaffectionFormProps> = ({
     initialValues: {
       title: '',
       description: '',
-      witnesses: [],
-      involvedPeople: [],
+      witnesses: [''],
+      involvedPeople: [''],
     },
     validationSchema,
     onSubmit: async (values: CreateDisaffectionFormInputs) => {
@@ -58,6 +58,10 @@ const CreateDisaffectionForm: FC<CreateDisaffectionFormProps> = ({
       }
     },
   });
+
+  useEffect(() => {
+    console.log(formik.values);
+  }, [formik.values]);
 
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -114,22 +118,23 @@ const CreateDisaffectionForm: FC<CreateDisaffectionFormProps> = ({
             fullWidth
             onChange={formik.handleChange}
             value={formik.values.witnesses[0]}
-            error={formik.touched.witnesses && Boolean(formik.errors.witnesses)}
+            error={formik.touched.witnesses && Boolean(formik.errors.witnesses?.[0])}
             onBlur={formik.handleBlur}
-            helperText={formik.touched.witnesses && formik.errors.witnesses ? String(formik.errors.witnesses) : '' as ReactNode}
+            helperText={formik.touched.witnesses && formik.errors.witnesses?.[0] ? String(formik.errors.witnesses?.[0]) : '' as ReactNode}
           />
           {
             formik.values.witnesses.map((witness: string, index: number) => (
+              index > 0 &&
               <TextField
                 key={`disaffection-witness-${index}`}
                 id={`disaffection-witness-${index}-field`}
                 name={`witnesses[${index}]`}
-                label={`Testemunha ${index + 2}`}
+                label={`Testemunha ${index + 1}`}
                 onChange={formik.handleChange}
                 value={formik.values.witnesses[index]}
-                error={formik.touched.witnesses && Boolean(formik.errors.witnesses)}
+                error={formik.touched.witnesses && Boolean(formik.errors.witnesses?.[index])}
                 onBlur={formik.handleBlur}
-                helperText={formik.touched.witnesses && formik.errors.witnesses ? String(formik.errors.witnesses) : '' as ReactNode}
+                helperText={formik.touched.witnesses && formik.errors.witnesses?.[index] ? String(formik.errors.witnesses?.[index]) : '' as ReactNode}
               />
             ))
           }
@@ -163,12 +168,13 @@ const CreateDisaffectionForm: FC<CreateDisaffectionFormProps> = ({
             fullWidth
             onChange={formik.handleChange}
             value={formik.values.involvedPeople[0]}
-            error={formik.touched.involvedPeople && Boolean(formik.errors.involvedPeople)}
+            error={formik.touched.involvedPeople && Boolean(formik.errors.involvedPeople?.[0])}
             onBlur={formik.handleBlur}
-            helperText={formik.touched.involvedPeople && formik.errors.involvedPeople ? String(formik.errors.involvedPeople) : '' as ReactNode}
+            helperText={formik.touched.involvedPeople && formik.errors.involvedPeople?.[0] ? String(formik.errors.involvedPeople?.[0]) : '' as ReactNode}
           />
           {
             formik.values.involvedPeople.map((involvedPeople: string, index: number) => (
+              index > 0 &&
               <TextField
                 key={`disaffection-involved-people-${index}`}
                 id={`disaffection-involved-people-${index}-field`}
@@ -176,9 +182,9 @@ const CreateDisaffectionForm: FC<CreateDisaffectionFormProps> = ({
                 label={`Pessoa envolvida ${index + 2}`}
                 onChange={formik.handleChange}
                 value={formik.values.involvedPeople[index]}
-                error={formik.touched.involvedPeople && Boolean(formik.errors.involvedPeople)}
+                error={formik.touched.involvedPeople && Boolean(formik.errors.involvedPeople?.[index])}
                 onBlur={formik.handleBlur}
-                helperText={formik.touched.involvedPeople && formik.errors.involvedPeople ? String(formik.errors.involvedPeople) : '' as ReactNode}
+                helperText={formik.touched.involvedPeople && formik.errors.involvedPeople?.[index] ? String(formik.errors.involvedPeople?.[index]) : '' as ReactNode}
               />
             ))
           }

@@ -42,7 +42,6 @@ const CreateOffenseForm: FC<CreateOffenseFormProps> = ({
     validationSchema,
     onSubmit: async (values: any) => {
       try {
-        values.dateTime = values.dateTime.toISOString();
         await handleSubmitForm!(values);
       } catch (error) {
         console.log(error);
