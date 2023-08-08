@@ -18,22 +18,24 @@ const DisaffectionPage: FC<any> = () => {
   const [createOffenseModalOpen, setCreateOffenseModalOpen] = useState(false);
 
   useEffect(() => {
-    if (!router?.query?.id) {
-      getDisaffection(router?.query.id);
+    if (router?.query?.id) {
+      console.log("router.query.id", router.query.id)
+      getDisaffection(router.query.id);
     }
-  }, []);
+  }, [router?.query?.id]);
 
   const getDisaffection = useCallback(async (disaffectionId: any) => {
-    const res = await fetch(`${BASE_API_URL}/disaffection/${disaffectionId}}`);
+    const res = await fetch(`${BASE_API_URL}/disaffection/${disaffectionId}`);
     const data = await res.json();
-    setDisaffection(data.results);
+    setDisaffection(data);
   }, []);
 
   const createOffense = useCallback(async (data: any) => {
     const disaffectionId = router?.query.id;
-    const res = await fetch(`${BASE_API_URL}/offenses/${disaffectionId}`, {
+    const res = await fetch(`${BASE_API_URL}/offenses`, {
       method: 'POST',
       body: JSON.stringify({
+        disaffectionId,
         ...data,
       }),
       headers: {
