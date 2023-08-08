@@ -54,7 +54,7 @@ const Home: FC<any> = () => {
   }, []);
 
   return (
-    <BaseLayout title="Desafeições">
+    <BaseLayout title="Desafetos">
       <Button
         onClick={openCreateDisaffectionModal}
         sx={{

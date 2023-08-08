@@ -1,10 +1,12 @@
-import React, { FC, ReactNode} from 'react';
+import React, { FC, ReactNode, useEffect} from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import {  TextField, Typography } from '@mui/material';
 import { AddCircle } from '@mui/icons-material';
 import Box from '@/components/layout/Box';
 import Button from '@/components/inputs/Button';
+import { DateTimeField } from '@mui/x-date-pickers';
+import dayjs from 'dayjs';
 
 const validationSchema = yup.object({
   title: yup
@@ -17,6 +19,9 @@ const validationSchema = yup.object({
     .string(),
   offendingPerson: yup
     .string()
+    .required('Campo obrigatório'),
+  dateTime: yup
+    .date()
     .required('Campo obrigatório'),
 });
 interface CreateOffenseFormProps {
@@ -32,16 +37,22 @@ const CreateOffenseForm: FC<CreateOffenseFormProps> = ({
       description: '',
       cursedFamilyMember: '',
       offendingPerson: '',
+      dateTime: dayjs(new Date()),
     },
     validationSchema,
     onSubmit: async (values: any) => {
       try {
+        values.dateTime = values.dateTime.toISOString();
         await handleSubmitForm!(values);
       } catch (error) {
         console.log(error);
       }
     },
   });
+
+  useEffect(() => {
+    console.log(formik.values);
+  }, [formik.values]);
 
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -92,6 +103,24 @@ const CreateOffenseForm: FC<CreateOffenseFormProps> = ({
           onBlur={formik.handleBlur}
           helperText={formik.touched.offendingPerson && formik.errors.offendingPerson ? String(formik.errors.offendingPerson) : '' as ReactNode}
         />
+
+        <DateTimeField
+          id="offense-date-time-field"
+          name="dateTime"
+          label="Data e hora do ocorrido"
+          value={formik.values.dateTime}
+          onChange={(date) => formik.setFieldValue('dateTime', date.$d)}
+          onBlur={formik.handleBlur}
+          helperText={formik.touched.dateTime && formik.errors.dateTime ? String(formik.errors.dateTime) : '' as ReactNode}
+          slotProps={{
+            textField: {
+                variant: "outlined",
+                error: formik.touched.dateTime && Boolean(formik.errors.dateTime),
+                helperText: formik.touched.dateTime && formik.errors.dateTime ? String(formik.errors.dateTime) : '' as ReactNode
+            }
+          }}
+        />
+
 
         <Button
           width="80px"
