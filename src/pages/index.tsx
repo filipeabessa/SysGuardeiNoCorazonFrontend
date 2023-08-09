@@ -62,7 +62,7 @@ const Home: FC<any> = () => {
           marginBottom: '20px',
         }}
       >
-        Criar desafeição
+        Criar desafeto
       </Button>
       <Box
         display="flex"
